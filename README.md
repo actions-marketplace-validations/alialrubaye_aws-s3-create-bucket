@@ -8,7 +8,7 @@ This is a sample usage of this action that you can adapt / modify and copy to yo
 
 ```yaml
 - name: Create bucket and validate if it's laready existed
-  uses: alialrubaye/aws-s3-create-bucket@v1.0.1
+  uses: alialrubaye/aws-s3-create-bucket@1.0.1
   with:
     bucket-name: 'my-unique-name-for-my-bucket'
     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
