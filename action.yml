@@ -1,4 +1,4 @@
-name: 'AWS S3 Bucket Creatation'
+name: 'AWS S3 Bucket Creation'
 description: 'Create a new bucket in AWS S3 on demand'
 author: 'Ali Alrubaye'
 inputs:
