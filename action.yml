@@ -23,6 +23,3 @@ runs:
     - ${{ inputs.aws-access-key-id }}
     - ${{ inputs.aws-secret-access-key }}
     - ${{ inputs.aws-region }}
-branding:
-  icon: 'cloud'
-  color: 'orange'
