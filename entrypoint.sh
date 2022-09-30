@@ -6,7 +6,7 @@ export AWS_SECRET_ACCESS_KEY=$3
 export AWS_REGION=$4
 
 
-if [ -z "${BUCKET_NAME}" ] || [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_SECRET_ACCESS_KEY}" ] || [ -z "${AWS_REGION}" ] || [ -z "${ACL}" ]
+if [ -z "${BUCKET_NAME}" ] || [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_SECRET_ACCESS_KEY}" ] || [ -z "${AWS_REGION}" ] ]
 then
     echo "Insufficient or improperly configured input for this Github Action"
     exit 1
