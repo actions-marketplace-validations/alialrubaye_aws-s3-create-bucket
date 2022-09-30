@@ -6,26 +6,30 @@ export AWS_SECRET_ACCESS_KEY=$3
 export AWS_REGION=$4
 
 
-if [ -z "${BUCKET_NAME}" ] || [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_SECRET_ACCESS_KEY}" ] || [ -z "${AWS_REGION}" ] ]
+if [ -z "${BUCKET_NAME}" ] || [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_SECRET_ACCESS_KEY}" ] || [ -z "${AWS_REGION}" ] 
 then
     echo "Insufficient or improperly configured input for this Github Action"
     exit 1
 else
   
-  if [ aws s3api head-bucket --bucket ${BUCKET_NAME} 2>/dev/null]; then
-        echo "the bucket \`${BUCKET_NAME}\` already exist."
-        exit 1
-  fi      
-    aws s3api create-bucket \
+  
+    bucketstatus=$(aws s3api head-bucket --bucket ${BUCKET_NAME} 2>&1)
+    if echo "${bucketstatus}" | grep 'Not Found';
+    then
+      echo "bucket doesn't exist..........................";
+      aws s3api create-bucket \
         --bucket $BUCKET_NAME \
         --region $AWS_REGION \
-        --create-bucket-configuration LocationConstraint=$AWS_REGION \
-
-
-    if [ $? -eq 0 ]; then
-        echo "Bucket \`${BUCKET_NAME}\` created successfully!"
+        --create-bucket-configuration LocationConstraint=$AWS_REGION 
+      echo "bucket bucket created successfully..............";  
+    elif echo "${bucketstatus}" | grep 'Forbidden';
+    then
+      echo "Bucket exists but not owned"
+    elif echo "${bucketstatus}" | grep 'Bad Request';
+    then
+      echo "Bucket name specified is less than 3 or greater than 63 characters"
     else
-        echo "There was a problem creating bucket \`${BUCKET_NAME}\`, please read the logs above this message."
-        exit 1
+      echo "Bucket owned and exists";
     fi
+
 fi
