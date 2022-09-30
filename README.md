@@ -7,8 +7,8 @@ A Github Action that let's you create a new AWS S3 bucket on demand during your 
 This is a sample usage of this action that you can adapt / modify and copy to your workflow:
 
 ```yaml
-- name: Create bucket and validate if it's laready existed
-  uses: alialrubaye/aws-s3-create-bucket@v2.0.0
+- name: Create bucket and validate if it's already existed
+  uses: alialrubaye/aws-s3-create-bucket@v1.0.0
   with:
     bucket-name: 'my-unique-name-for-my-bucket'
     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
