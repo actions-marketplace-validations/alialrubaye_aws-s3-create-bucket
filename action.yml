@@ -1,4 +1,4 @@
-name: 'AWS S3 Create Bucket and Validate if it's Existed'
+name: 'AWS S3 Bucket Creatation'
 description: 'Create a new bucket in AWS S3 on demand'
 author: 'Ali Alrubaye'
 inputs:
